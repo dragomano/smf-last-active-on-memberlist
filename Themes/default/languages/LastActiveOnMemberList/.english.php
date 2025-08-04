@@ -1,3 +1,3 @@
 <?php
 
-$txt['last_login'] = 'Last activity';
+$txt['last_activity'] = 'Last activity';
