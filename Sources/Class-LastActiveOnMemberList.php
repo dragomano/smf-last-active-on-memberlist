@@ -9,7 +9,7 @@
  * @copyright 2025 Bugo
  * @license https://opensource.org/licenses/MIT The MIT License
  *
- * @version 0.1
+ * @version 0.2
  */
 
 namespace Bugo;
@@ -37,14 +37,18 @@ class LastActiveOnMemberList
 	{
 		global $context, $txt;
 
+		if (empty($context['user']['is_admin']))
+			return;
+
 		loadLanguage('LastActiveOnMemberList/');
 
 		if (empty($context['custom_profile_fields']['columns'])) {
 			$context['custom_profile_fields']['columns'] = [];
 		}
 
+		// Add virtual custom profile field
 		$context['custom_profile_fields']['columns']['last_login'] = [
-			'label' => $txt['last_login'],
+			'label' => $txt['last_activity'],
 			'type'  => 'text',
 			'bbc'   => false,
 			'sort'  => [
